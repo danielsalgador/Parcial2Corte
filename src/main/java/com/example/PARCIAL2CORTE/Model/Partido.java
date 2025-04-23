@@ -1,5 +1,6 @@
 package com.example.PARCIAL2CORTE.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,6 +36,8 @@ public class Partido {
     private int golesVisita;
 
     @OneToMany(mappedBy = "partido", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = {"partido"})
     private List<EstadisticaJugador> estadisticaJugador;
+
 
 }

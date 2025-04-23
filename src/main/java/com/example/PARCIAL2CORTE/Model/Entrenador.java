@@ -1,5 +1,6 @@
 package com.example.PARCIAL2CORTE.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,5 +23,7 @@ public class Entrenador {
 
     @ManyToOne
     @JoinColumn(name="id_equipo")
+    @JsonIgnoreProperties("entrenador")
+
     private Equipo equipo;
 }

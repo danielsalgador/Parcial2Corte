@@ -1,10 +1,8 @@
 package com.example.PARCIAL2CORTE.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name="equipo")
+@Table(name = "equipo")
 public class Equipo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +23,10 @@ public class Equipo {
     private LocalDate fundacion;
 
     @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("equipo")
     private List<Jugador> jugador;
 
     @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("equipo")
     private List<Entrenador> entrenador;
-
-
 }
